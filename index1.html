@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <script src="./vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        {{ mensagem }} <br>
+        valorTotal {{ valorTotal }} <br>
+       hobbies {{ hobbies[1] }} <br>
+       perfil {{ perfil.nome }} <br>
+       Cursos {{ perfil.cursos[1].nome }} <br>
+         {{ perfil.cursos[0].ch }} <br>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                mensagem: 'Primeiro template Vues',
+                valorTotal: 150.64,
+                logado: false,
+                hobbies:[
+                    'jogar bola'
+                    ,  'futebill'
+                ],
+                perfil:{
+                    nome: 'Aeccio Queiroz',
+                    idade:32,
+                    cursos:[
+                        {nome:'Laravel ', ch:45},
+                        {nome:'PHP', ch:15}
+                    ]
+                }
+            }
+        });// vm = ViewMOdel
+
+    </script>
+</body>
+
+</html>
