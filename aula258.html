@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <script src="./vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+
+<body>
+    <div id="app">
+    {{ somar() }} <br>
+    {{ subtrair() }} <br>
+    {{ multiplicar() }} <br>
+    {{ multiplicarError() }} <br>
+    {{ dividir() }} <br>
+    {{ numeroAleatorio() }} <br>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: { 
+                n1:10,
+                n2: 5
+            },
+            methods:{
+                somar: function somar() {// convencional
+                    return this.n1 + this.n2;
+                },
+                subtrair: function() {// anomina
+                    return this.n1 - this.n2;
+                },
+                multiplicarError: () => {// arrow function
+                    return this.n1 * this.n2; // NAO FUNCIONAR ERROR LEXICO
+                },
+                multiplicar: () => {// arrow function
+                    return 10 * 3; // NAO FUNCIONAR ERROR LEXICO
+                },
+                dividir() {// enxuta => usa a forma convencional
+                    return this.n1 / this.n2;
+                },
+                numeroAleatorio() {// enxuta => usa a forma convencional
+                    return Math.random();
+                }
+
+            }
+        });// vm = ViewMOdel
+
+    </script>
+</body>
+
+</html>
