@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <style>
+        .vermelho {
+            color: red
+        }
+
+        .negrito {
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+    <script src="./vue.js"></script>
+
+    <!--
+    PROXIMA AULA = 260
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- 260. Diretiva V-Bind - Sintaxe sugar e a sobreposição/encadeamento de valores -->
+        <a :href="site" target="_blank">google</a>
+        <p class="negrito" :class="cor"> Entendendo a diretitva v Bind</p>
+        <input type="text" :placeholder="instrucao" :value="valor" />
+        <input type="checkbox" :checked="check" />
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                site: 'https://www.google.com/',
+                cor: 'vermelho',
+                instrucao: ' placehoder objeto _v-bind',
+                valor: 'Digite aqui o valor ',
+                check: true
+            },
+            methods: {}
+        });// vm = ViewMOdel
+
+    </script>
+</body>
+
+</html>

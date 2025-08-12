@@ -6,34 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso Vue Js - SICAP LCO</title>
     <style>
-        .vermelho {
-            color: red
+        .azul {
+            background-color: blue;
         }
 
-     </style>
+        .verde {
+            background-color: green;
+        }
+    </style>
     <script src="./vue.js"></script>
-     
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+
+    <!--
+    PROXIMA AULA = 262. 262. Diretiva V-On - Manipulando eventos
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 </head>
 
 <body>
     <div id="app">
-        <a v-bind:href="site" target="_blank">google</a>
-        <p v-bind:class="cor"> Entendendo a diretitva v Bind</p>
-             <input type="text" v-bind:placeholder="instrucao" v-bind:value="valor" />
-             <input type="checkbox" v-bind:checked="check"/>
+        SOma = {{ 2 +2 }} <br>
+        Calculos = {{ (2 +2) /2 }} <br>
+        Tamanho de caracteres = {{ mensagem.length }} <br>
+        Tamanho de caracteres = {{ mensagem.substr(0,3) }} <br>
+        Diretiva v:bind com condicao<input type="text" :value="mensagem" :class=" condicao ? 'verde' : estilo">
+
     </div>
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                    site: 'https://www.google.com/',
-                    cor: 'vermelho',
-                    instrucao:' placehoder objeto v-bind',
-                    valor: 'valor default v-bind',
-                    check: true
-             },
-            methods:{  }
+                mensagem: 'valores via vBInd',
+                estilo: 'azul',
+                condicao: true
+            },
+            methods: {}
         });// vm = ViewMOdel
 
     </script>
