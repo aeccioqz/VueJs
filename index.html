@@ -6,13 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso Vue Js - SICAP LCO</title>
     <style>
-        .azul {
-            background-color: blue;
-        }
 
-        .verde {
-            background-color: green;
-        }
     </style>
     <script src="./vue.js"></script>
 
@@ -23,22 +17,32 @@
 
 <body>
     <div id="app">
-        SOma = {{ 2 +2 }} <br>
-        Calculos = {{ (2 +2) /2 }} <br>
-        Tamanho de caracteres = {{ mensagem.length }} <br>
-        Tamanho de caracteres = {{ mensagem.substr(0,3) }} <br>
-        Diretiva v:bind com condicao<input type="text" :value="mensagem" :class=" condicao ? 'verde' : estilo">
+        <!-- <input type="text" @keyup="imprimirTexto()"> -->
+        <!-- <button @click="mensagemAlerta">Botão </button> -->
+
+
+        <input type="text" v-on:keyup="imprimirTexto('meu parametro', 6, variavelVbind)">
+        <button v-on:click="mensagemAlerta">Botão </button>
 
     </div>
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                mensagem: 'valores via vBInd',
-                estilo: 'azul',
-                condicao: true
+                variavelVbind: true
             },
-            methods: {}
+            methods: {
+                imprimirTexto(texto, numero, varVBind) {
+                    console.log(texto);
+                    console.log(numero);
+                    console.log('Variavel via parametros (nao usual) = ' + varVBind); // Ou podemos:
+                    console.log('Variavel data = ' + this.variavelVbind)
+                },
+                mensagemAlerta() {
+                    alert('Click on btn 2');
+                }
+
+            }
         });// vm = ViewMOdel
 
     </script>
