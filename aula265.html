@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <style>
+
+        .borda{
+            border: 1px solid;
+        }
+        .div-principal{
+            width: 200px;
+            height: 200px;
+        }
+        .div-comun{
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+        .verde{
+            background-color: green;
+        }
+        .vermelho{
+            background-color: red;
+        }
+        .cinza{
+            background-color: gray;
+        }
+    </style>
+    <script src="./vue.js"></script>
+
+    <!--
+    265. Hands on - Praticando com data, methods, template string, v-bind e v-on
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+
+<body>
+    <div id="app">
+       <div class="borda div-principal" :class="cor">   
+        {{ cor}} <br>
+        {{ posX }} <br>
+        {{ posY }} 
+       </div>
+       <hr>
+       <div v-on:click="mudarCor($event, 'vermelho')" class="borda div-comun vermelho">  click </div>
+       
+       <div v-on:mouseover="mudarCor($event, 'verde')"
+            v-on:mouseout="mudarCor($event, 'vermelho')"
+            class="borda div-comun verde"> verde </div>
+       
+            <div v-on:mousemove="coordenadas($event)" 
+                class="borda div-comun cinza"> cinza </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                cor : 'verde',
+                posX : 0,
+                posY : 0
+            },
+            methods: {
+                mudarCor(event, novaCor){
+                    this.cor = novaCor;
+                },
+                coordenadas(event){
+                     this.posX = event.clientX;
+                     this.posY = event.clientY;
+                }
+            }
+        });// vm = ViewMOdel
+    </script>
+</body>
+</html>

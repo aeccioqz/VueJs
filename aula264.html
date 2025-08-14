@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <style>
+
+    </style>
+    <script src="./vue.js"></script>
+
+    <!--
+    PROXIMA AULA = 262. 262. Diretiva V-On - Manipulando eventos
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="text" @keyup="imprimirTexto()"> -->
+        <!-- <button @click="mensagemAlerta">Botão </button> -->
+
+
+        <input type="text" v-on:keyup="imprimirTexto('meu parametro', 6, variavelVbind)">
+        <button v-on:click="mensagemAlerta($event, 'texto', 2)">Botão </button>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                variavelVbind: true
+            },
+            methods: {
+                imprimirTexto(texto, numero, varVBind) {
+                    console.log(texto);
+                    console.log(numero);
+                    console.log('Variavel via parametros (nao usual) = ' + varVBind); // Ou podemos:
+                    console.log('Variavel data = ' + this.variavelVbind)
+                },
+                mensagemAlerta(event, texto, numero) {
+                    console.log(event, texto, numero)
+                }
+
+            }
+        });// vm = ViewMOdel
+
+    </script>
+</body>
+
+</html>
