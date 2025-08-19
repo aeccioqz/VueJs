@@ -10,18 +10,14 @@
     </style>
     <script src="./vue.js"></script>
 
-    <!-- PROXIMA = 274. Diretiva V-For - Implementando laços de repetição parte 2
+    <!-- PROXIMA = 268
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 </head>
 <body>
     <div id="app">
-        <ul>
-            <li v-for="(variavel, chave) in cursos"> {{ chave }} - {{ variavel }}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="(variavel, chave) in cursos" v-text="chave +'-'+ variavel">  </li>
-        </ul>
+       <div v-html="elemento">  <p> elemento existentes serao apagados </p>  </div>
+       <hr>
+       <div v-text="novoTexto">  <p> texto anterior </p>  </div>
     </div>
 
     <script>
@@ -29,12 +25,10 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cursos: ['Laravel' , 'Web Completo', 'Banco de dados']
-
+                elemento: '<p> HTMl que serao inseridos </p> <a href="https://ge.globo.com/futebol/times/sao-paulo/">link</a>',
+                novoTexto: ' texto a ser inserido no corpo do arquivo'
             },
-            methods: {
-
-            }
+            methods: {}
         })
 
     </script>

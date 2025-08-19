@@ -10,18 +10,17 @@
     </style>
     <script src="./vue.js"></script>
 
-    <!-- PROXIMA = 274. Diretiva V-For - Implementando laços de repetição parte 2
+    <!-- PROXIMA = 268
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 </head>
 <body>
     <div id="app">
-        <ul>
-            <li v-for="(variavel, chave) in cursos"> {{ chave }} - {{ variavel }}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="(variavel, chave) in cursos" v-text="chave +'-'+ variavel">  </li>
-        </ul>
+       <p v-once>Saldo Inicial: R$ {{ saldo }}</p>
+       <p>Saldo Atualizado: R$ {{ saldo }}</p>
+
+       <input type="text" id="inputTexto">
+        <button @click="creditar()">creditar</button>
+        <button @click="debitar()">debitar</button>
     </div>
 
     <script>
@@ -29,10 +28,15 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cursos: ['Laravel' , 'Web Completo', 'Banco de dados']
-
+                saldo: 150.59
             },
             methods: {
+                debitar(){
+                    this.saldo -= parseFloat(inputTexto.value);
+                },
+                creditar(){
+                    this.saldo += parseFloat(inputTexto.value);
+                }
 
             }
         })

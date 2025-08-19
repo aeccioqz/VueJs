@@ -10,18 +10,16 @@
     </style>
     <script src="./vue.js"></script>
 
-    <!-- PROXIMA = 274. Diretiva V-For - Implementando laços de repetição parte 2
+    <!-- PROXIMA = 268
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 </head>
 <body>
     <div id="app">
-        <ul>
-            <li v-for="(variavel, chave) in cursos"> {{ chave }} - {{ variavel }}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="(variavel, chave) in cursos" v-text="chave +'-'+ variavel">  </li>
-        </ul>
+        <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">Exemplo tooltip</p>
+        <div v-show="exibirTextoAjuda">
+            <h3>Título texto ajuda</h3>
+            <p>Contendo texto ajuda</p>
+        </div>
     </div>
 
     <script>
@@ -29,12 +27,9 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                cursos: ['Laravel' , 'Web Completo', 'Banco de dados']
-
+                exibirTextoAjuda: false
             },
-            methods: {
-
-            }
+            methods: {}
         })
 
     </script>
