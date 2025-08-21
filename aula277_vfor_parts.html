@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <style>
+        /* CSS AQUI */
+    </style>
+    <script src="./vue.js"></script>
+
+    <!-- PROXIMA = 278. 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+<body>
+    <div id="app">
+         <span> 277. Diretiva V-For - Adicionando e excluindo elementos </span>
+       Numeros gerados:
+        <ul>
+            <li v-for="(c , chave) in comentarios"> {{ c.id }} {{ c.valor }} </li>
+        </ul>
+        <button @click="adicionandoElemento()"> Adicionar</button>
+        <button @click="excluirElemento()"> Excluir</button>
+        <button @click="atualizarElemento()"> atualizar</button>
+       <br>
+       <hr>
+
+
+       
+        <span> 276. Diretiva V-For - Implementando laços de repetição parte 3 </span>
+       Numeros gerados:
+        <ul>
+            <li v-for="valor in quantidadeRepeticoes"> {{ valor }} </li>
+        </ul>
+        <button @click="setQuantidadeRepeticoes()"> Random</button>
+       <br>
+       <hr>
+        <span> 275. Renderização de listas com o atributo Key </span>
+       <ul>
+            <li v-for="(valor, chave) in publicacoes" :key="valor.id"> 
+              <div>  {{ valor.descricao  }} <br>
+                <input type="text"  >
+              </div>
+            </li>
+        </ul>
+       <button @click="misturarArray()">Misturar Elementos</button>
+       
+        <hr>
+        <ul>
+            <li v-for="(variavel, chave) in cursos"> {{ chave }} - {{ variavel }}</li>
+        </ul>
+       
+       
+        
+        <hr>
+        <ul>
+            <li v-for="(variavel, chave) in cursos" v-text="chave +'-'+ variavel">  </li>
+        </ul>
+         <hr>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>curso</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(obj, key)  in cursos2">
+                    <td > {{ key }}</td>
+                    <td > {{ obj.titulo }}</td>
+                    <td > {{ obj.descricao }}</td>
+                </tr>
+                <!-- ou dessa forma : destructuring assigner-->
+                 <tr v-for="({titulo, descricao}, key)  in cursos2">
+                    <td > {{ key }}</td>
+                    <td > {{ titulo }}</td>
+                    <td > {{ descricao }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                quantidadeRepeticoes: 5,
+                comentarios: [
+                     {id: 234234 , valor:' Laravel curso maravilhoso'},
+                     {id: 345345 , valor:' Curso SCrum sempre atualizado'},
+                     {id: 334534545 , valor:' Curso Java horrivek'},
+                    ],
+                cursos: ['Laravel' , 'Web Completo', 'Banco de dados'],
+                cursos2: { 
+                    1000: {titulo: 'Laravel', descricao:' Laravel o frame work php mais famoso'},
+                    1001:{titulo: 'Banco de dados', descricao:' use o SGBD para gerenciar'},
+                    1002: {titulo: 'Java', descricao:' Java a mais poderosa'}},
+                
+                publicacoes: [
+                     {id: 234 , descricao:' Laravel o frame work php mais famoso'},
+                     {id: 254 , descricao:' Curso SCrum'},
+                     {id: 345 , descricao:' Curso Java'},
+                    ]
+
+            },
+            methods: {
+                    misturarArray(){
+                        let mix = [];
+                        mix[0] = this.publicacoes[2];
+                        mix[1] = this.publicacoes[0];
+                        mix[2] = this.publicacoes[1];
+                        this.publicacoes = mix;
+                    },
+                    setQuantidadeRepeticoes(){
+                        this.quantidadeRepeticoes = Math.floor(Math.random() * 20)
+                    }, 
+                    adicionandoElemento(){
+                        let pk = Math.floor(Math.random() * 20);
+                        this.comentarios.push({id: pk , valor: this.textoAleatorio(pk)});
+                    },
+                    excluirElemento(){
+                        this.comentarios.pop();
+                    },
+                    atualizarElemento(){
+                        // this.$set(<array>, <indice>, <novo valor>);
+                        let indice = Math.floor(Math.random() * this.comentarios.length);
+                         let tamanhoTexto = Math.floor(Math.random() * 20);
+                        this.$set(this.comentarios, indice, {id: indice , valor: this.textoAleatorio(tamanhoTexto)});
+                    },
+                    textoAleatorio(tamanho) {
+                        const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                        let resultado = "";
+                        for (let i = 0; i < tamanho; i++) {
+                            const randomIndex = Math.floor(Math.random() * caracteres.length);
+                            resultado += caracteres[randomIndex];
+                        }
+                        return resultado;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

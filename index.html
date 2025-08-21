@@ -10,56 +10,31 @@
     </style>
     <script src="./vue.js"></script>
 
-    <!-- PROXIMA = 275. 
+    <!-- PROXIMA = 279. 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 </head>
 <body>
     <div id="app">
-        <ul>
-            <li v-for="(variavel, chave) in cursos"> {{ chave }} - {{ variavel }}</li>
-        </ul>
-        <hr>
-        <ul>
-            <li v-for="(variavel, chave) in cursos" v-text="chave +'-'+ variavel">  </li>
-        </ul>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>curso</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(obj, key)  in cursos2">
-                    <td > {{ key }}</td>
-                    <td > {{ obj.titulo }}</td>
-                    <td > {{ obj.descricao }}</td>
-                </tr>
-                <!-- ou dessa forma : destructuring assigner-->
-                 <tr v-for="({titulo, descricao}, key)  in cursos2">
-                    <td > {{ key }}</td>
-                    <td > {{ titulo }}</td>
-                    <td > {{ descricao }}</td>
-                </tr>
-            </tbody>
-        </table>
+         <template v-if="saudacao">
+            <!-- tag template nao aparece na renderizacao do DOM  -->
+                <h1>Boas Vindas</h1>
+                <p>Conteudo da tag template</p>
+         </template>
+         <hr>
+        <h1>Tabuada de 2</h1>
+         <template v-for="n in 10">
+                <p> 2 x {{n}} = {{ 2*n}}</p>
+         </template>
     </div>
 
     <script>
-
         const vm = new Vue({
             el: '#app',
             data: {
-                cursos: ['Laravel' , 'Web Completo', 'Banco de dados'],
-                cursos2: { 
-                    1000: {titulo: 'Laravel', descricao:' Laravel o frame work php mais famoso'},
-                    1001:{titulo: 'Banco de dados', descricao:' use o SGBD para gerenciar'},
-                    1002: {titulo: 'Java', descricao:' Java a mais poderosa'}}
-
+                saudacao:true
             },
             methods: {
-
+                    
             }
         })
 
