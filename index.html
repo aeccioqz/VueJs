@@ -10,79 +10,30 @@
     </style>
     <script src="./vue.js"></script>
 
-    <!-- PROXIMA = 279. 
+    <!-- PROXIMA = 282. 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 </head>
 <body>
     <div id="app">
-          <h4>Boas Vindas Tam {{ pacientes.length}}</h4>
-          <h4>Boas Vindas indexUltimo {{ indexUltimo }}</h4>
-            Nome: <input type="text" id="inputnome"  > <br>
-            IDade: <input type="text" id="inputidade" > <br>
-            Plano: <input type="text" id="inputplano"  > <br>
-          <button @click="adicionarPacientes()">Adicionar</button>
-            
-            <p v-if="pacientes.length > 0 "> 
-                <span>Ultimo Paciente:</span><br> 
-                  {{  lastPaciente }} <br>
-            </p>
-            <div v-if="exibirPlanosOuro">
-                 <h4> Pacientes do Plano Ouro </h4>
-                <p v-for="(p, chave) in pacientesPlanoOuro "> 
-                    {{ printPaciente(chave) }} 
-                </p>
-
-            </div>
-           
-            <h4>Lista de Pacientes</h4>
-            <p v-for="(p, chave) in pacientes">
-                  {{ printPaciente(chave) }} 
-                </p>
+        {{paciente }} <br><br>
+        maneira 1: <input type="text" :value="paciente" @keyup="setPaciente($event)"  >   <br><br>
+        maneira 2: <input type="text" v-model="paciente"  >  
 
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
-            data: {
-                pacientes: [],
-                indexUltimo: 0,
-                exibirPlanosOuro: false 
+            data: { 
+                paciente: 'Aeccio Queiroz'
             },
             methods: {
-                    adicionarPacientes(){
-                        if (inputnome.value !='') {
-                            this.pacientes.push(
-                            {
-                                nome: inputnome.value,
-                                idade: inputidade.value,
-                                plano: inputplano.value
-                            } );
-                            if(inputplano.value == 'Ouro'){
-                                this.exibirPlanosOuro  = true;
-                            }
-                            this.indexUltimo = this.pacientes.length
-                        }
-                        
-                    },
-                    printPaciente(key){
-                            let texto = '';
-                            texto += ' Paciente: ' + this.pacientes[key].nome.toUpperCase();    
-                            texto += ' / Idade: ' + this.pacientes[key].idade;    
-                            texto += ' / Plano: ' + this.pacientes[key].plano.toUpperCase();    
-                            return texto;
-                    }
+                setPaciente(e){
+                        this.paciente = e.target.value;
+                }
+                    
             },
             computed:{
-               lastPaciente(){
-                 let key = this.pacientes.length -1 ;
-                return this.printPaciente(key);
-               },
-               
-               pacientesPlanoOuro(){
-                    return this.pacientes.filter(item => item.plano == 'Ouro');
-               }
-
 
             }
         })
