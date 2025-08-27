@@ -10,30 +10,27 @@
     </style>
     <script src="./vue.js"></script>
 
-    <!-- PROXIMA = 282. 
+    <!-- PROXIMA = 283. 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 </head>
 <body>
     <div id="app">
-        {{paciente }} <br><br>
-        maneira 1: <input type="text" :value="paciente" @keyup="setPaciente($event)"  >   <br><br>
-        maneira 2: <input type="text" v-model="paciente"  >  
-
+              Aula 283
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: { 
-                paciente: 'Aeccio Queiroz'
+               
             },
             methods: {
-                setPaciente(e){
-                        this.paciente = e.target.value;
-                }
-                    
+                  
             },
             computed:{
+
+            },
+             watch:{
 
             }
         })

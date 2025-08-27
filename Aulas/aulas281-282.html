@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <style>
+        /* CSS AQUI */
+    </style>
+    <script src="./vue.js"></script>
+
+    <!-- PROXIMA = 282. 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+<body>
+    <div id="app">
+       paciente: {{paciente }} <br><br>
+        maneira 1: <input type="text" :value="paciente" @keyup="setPaciente($event)"  >   <br><br>
+        maneira 2: <input type="text" v-model="paciente"  >  
+        <hr>
+        <input type="radio" value="f" v-model="sexo" name="sexoinput" >Feminino
+        <input type="radio" value="m" v-model="sexo" name="sexoinput" >Feminino
+        <br> Sexo: {{ sexo }}
+        <hr>
+        <select v-model="plano">
+            <option value="" disabled> selecione um plano</option>
+            <option value="1"> basico 1</option>
+            <option value="2"> basico 2</option>
+            <option value="3"> Master</option>
+            <option value="4"> Outro</option>
+        </select>
+        <br> Plano: {{ plano }}
+         <hr>
+         <input type="checkbox" value="1000" v-model="doencas" name="doencasin" >Asma
+         <input type="checkbox" value="1001" v-model="doencas" name="doencasin" >HIV
+         <input type="checkbox" value="1002" v-model="doencas" name="doencasin" >Covid
+        <br> Doencas: {{ doencas }}
+    <hr>
+         <textarea v-model="diagnostico"> </textarea>
+        <br> diagnostico: {{ diagnostico }}        
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: { 
+                paciente: '',
+                sexo:'',
+                plano:'',
+                doencas:[],
+                diagnostico:''
+            },
+            methods: {
+                setPaciente(e){
+                        this.paciente = e.target.value;
+                }
+                    
+            },
+            computed:{
+
+            }
+        })
+
+    </script>
+</body>
+</html>
