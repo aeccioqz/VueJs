@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Vue Js - SICAP LCO</title>
+    <style>
+        /* CSS AQUI */
+    </style>
+    <script src="./vue.js"></script>
+
+    <!-- PROXIMA = 283. 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        Aula 283 <br>
+
+        Paciente: {{paciente }} <br><br>
+        <input type="text" v-model="paciente"><br>
+        Lista:
+        <ul>
+            <li v-for="p in lista"> {{p.nome}} , {{p.idade}} anos</li>
+        </ul>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                paciente: '',
+                listPacientes: [
+                    { nome: 'Aeccio', idade: 39 },
+                    { nome: 'Arnoldo', idade: 41 },
+                    { nome: 'Almir', idade: 70 },
+                    { nome: 'Alino', idade: 68 },
+                    { nome: 'Ari', idade: 56 },
+                    { nome: 'Augusto', idade: 28 },
+                    { nome: 'Fernanda', idade: 35 },
+                    { nome: 'Antonio', idade: 41 }
+                ],
+                lista: []
+            },
+            methods: {
+
+            },
+            computed: {
+
+            },
+            watch: {
+                // precisa ser o mesmo nome da propriedade em data
+                paciente(valorNovo, valorAntigo) {
+                    // console.log(valorNovo, valorAntigo);
+                    this.lista = this.listPacientes.filter(p => p.nome.match(valorNovo));
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
